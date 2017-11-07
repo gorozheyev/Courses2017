@@ -1,3 +1,5 @@
+package lecture_6;
+
 import java.util.Arrays;
 
 /**
