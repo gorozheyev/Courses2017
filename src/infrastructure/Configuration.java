@@ -9,5 +9,13 @@ public class Configuration {
 //        тернарный оператор
         String browser = System.getenv("browserType") != null ? System.getenv("browserType") : "chrome";
         System.out.println(browser);
+
+//        вызов метода getEnvirontmentVaribleOrDefault()
+        String browser2 = getEnvirontmentVaribleOrDefault("browserType", "Chrome");
+        System.out.println(browser2);
+    }
+
+    public static String getEnvirontmentVaribleOrDefault(String envVar, String defaultValue){
+        return System.getenv(envVar) != null ? System.getenv(envVar) : defaultValue;
     }
 }
