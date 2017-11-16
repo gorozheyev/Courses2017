@@ -1,5 +1,7 @@
 package lecture_6;
 
+import java.util.Arrays;
+
 /**
  * Created by Дима on 07.11.2017.
  */
@@ -9,6 +11,8 @@ public class modifySomeTexts_HW {
 
         String str = "Это удобный способ проверить регулярные выражения, когда вы их пишете в";
         String word = "help";
+        String code = "AX6BYU56UX6CV6BNT7NM 287430";
+
         System.out.println(str.toLowerCase());
         System.out.println(str.toUpperCase());
         System.out.println(upperLowerCaseChange(str));
@@ -17,6 +21,10 @@ public class modifySomeTexts_HW {
         System.out.println("Count words with length six simboils - " + countNumberOfWordsEachLength(str, 6));
         System.out.println("Count the single character in text - " + countSingleCaracters(str));
         System.out.println(removeLetterFromSomeText(str, 'о'));
+
+        squareWordPattern(word);
+
+        productCodeValidation(code);
     }
 
     public static String upperLowerCaseChange(String str){
@@ -69,17 +77,40 @@ public class modifySomeTexts_HW {
         return s1;
     }
 
-//    public static String squareWordPattern(String word){
-//        char mas[] = word.toCharArray();
-//        char w;
-//        for (int i =0; i<mas.length-1; i++){
-//            for(int j=0;j<mas.length; j++){
-//               w =  mas[i];
-//               mas[i] = mas[i+1];
-//               mas[i+1] = w;
-//            }
-//            System.out.println(mas);
-//        }
-//        return "";
-//    }
+    public static void squareWordPattern(String word){
+        char mas[] = word.toCharArray();
+        for (int i =0; i<mas.length; i++){
+            for (char newMass : mas){
+                System.out.print(newMass);
+            }
+            System.out.println();
+            for(int j=0; j<mas.length-1;j++) {
+                char letter = mas[j];
+                mas[j] = mas[j + 1];
+                mas[j + 1] = letter;
+            }
+        }
+    }
+
+    public static void productCodeValidation(String code){
+        String mass[] = code.split(" ");
+        char letters[] = mass[0].replaceAll("\\d+", "").trim().toCharArray();
+        char digitsFrompartOne[] = mass[0].replaceAll("\\D+", "").trim().toCharArray();
+        char digitsFromPartTwo[] = mass[1].toCharArray();
+        for (int i=0; i<letters.length;i++){
+            if(!Character.isUpperCase(letters[i])){
+                System.out.println("All letters must be in uppercase");
+            }
+        }
+        if (!(digitsFrompartOne.length == 6)){
+            System.out.println("In first part must be six digits");
+        }
+
+        for(int i=0; i<digitsFromPartTwo.length; i++){
+            if (!Character.isDigit(digitsFromPartTwo[i])){
+                System.out.println("In second part must be only digits");
+            }
+        }
+        
+    }
 }
