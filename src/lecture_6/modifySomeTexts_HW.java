@@ -27,6 +27,7 @@ public class modifySomeTexts_HW {
         productCodeValidation(code);
     }
 
+//    изменение первой буквыкаждого слова на заглавную
     public static String upperLowerCaseChange(String str){
         String str1[] = str.split(" ");
         String s = "";
@@ -39,11 +40,13 @@ public class modifySomeTexts_HW {
         return s2.trim();
     }
 
+//    колличество слов в тексте
     public static int countWordsInSomeText(String str){
         String count[] = str.split(" ");
         return count.length;
     }
 
+//    колличество слов в тексте одинаковой длинны
     public static int countNumberOfWordsEachLength(String str , int length) {
         int a = 0;
         String count[] = str.split(" ");
@@ -56,6 +59,7 @@ public class modifySomeTexts_HW {
         return a;
     }
 
+//    колличество одиночных символов
     public static int countSingleCaracters(String str){
         String s[] = str.split(" ");
         int a=0;
@@ -67,6 +71,7 @@ public class modifySomeTexts_HW {
         return a;
     }
 
+//    удаление буквы из текста
     public static String removeLetterFromSomeText(String str, char s){
         String s1 ="";
         for(int i=0; i<str.length(); i++){
@@ -77,6 +82,7 @@ public class modifySomeTexts_HW {
         return s1;
     }
 
+//    сортировка слова по букве (пузырьком)
     public static void squareWordPattern(String word){
         char mas[] = word.toCharArray();
         for (int i =0; i<mas.length; i++){
@@ -92,18 +98,16 @@ public class modifySomeTexts_HW {
         }
     }
 
+//    валидация кода
     public static void productCodeValidation(String code){
         String mass[] = code.split(" ");
         char letters[] = mass[0].replaceAll("\\d+", "").trim().toCharArray();
-        char digitsFrompartOne[] = mass[0].replaceAll("\\D+", "").trim().toCharArray();
+        char digitsFromPartOne[] = mass[0].replaceAll("\\D+", "").trim().toCharArray();
         char digitsFromPartTwo[] = mass[1].toCharArray();
         for (int i=0; i<letters.length;i++){
             if(!Character.isUpperCase(letters[i])){
                 System.out.println("All letters must be in uppercase");
             }
-        }
-        if (!(digitsFrompartOne.length == 6)){
-            System.out.println("In first part must be six digits");
         }
 
         for(int i=0; i<digitsFromPartTwo.length; i++){
@@ -111,6 +115,18 @@ public class modifySomeTexts_HW {
                 System.out.println("In second part must be only digits");
             }
         }
-        
+
+        if (!(digitsFromPartOne.length == 6)){
+            System.out.println("In first part must be six digits");
+        }
+        int result =1;
+        for (int i =0; i<digitsFromPartOne.length; i=i+2){
+            result = result*(Integer.parseInt((Character.toString(digitsFromPartOne[i])+Character.toString(digitsFromPartOne[i+1]))));
+        }
+        if(result == Integer.parseInt(mass[1].toString())){
+            System.out.println("Validation success");
+        }else
+        System.out.println("The number must be the product of the six digits taken in group of two from left");
+
     }
 }
