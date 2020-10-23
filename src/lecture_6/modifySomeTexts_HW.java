@@ -1,7 +1,5 @@
 package lecture_6;
 
-import java.util.Arrays;
-
 /**
  * Created by Дима on 07.11.2017.
  */
@@ -12,7 +10,6 @@ public class modifySomeTexts_HW {
         String str = "Это удобный способ проверить регулярные выражения, когда вы их пишете в";
         String word = "help";
         String code = "AX6BYU56UX6CV6BNT7NM 287430";
-
         System.out.println(str.toLowerCase());
         System.out.println(str.toUpperCase());
         System.out.println(upperLowerCaseChange(str));
